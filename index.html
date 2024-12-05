@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Weather App</title>
+          <link rel="stylesheet" href="style.css">
+          <script src="script.js" defer></script>
+     </head>
+     <body>
+          <!-- main weather container  -->
+          <div class="main_container">
+               <!-- input element  -->
+               <header class="input_box">
+                    <input type="text" class="city_name" placeholder="Enter City for Weather">
+                    <button class="search_btn" title="search">
+                         <img src="img/search.png" alt="search">
+                    </button>
+               </header>
+               <!-- Error element -->
+               <div class="no_city hide">
+                    <h4>
+                         <span>!!! Invalid City Name.</span>
+                         <button class="local_city" title="local city weather">
+                              <img src="img/loc.png" alt="loc">
+                              <span>local city</span>
+                         </button>
+                    </h4>
+                    <h1>404</h1>
+                    <p></p>
+               </div>
+               <!-- show weather element  -->
+               <main class="weather_box">
+                    <section class="location_date_sec">
+                         <div class="location">
+                              <img src="img/loc.png" alt="loc">
+                              <h4 class="city_text">Indore</h4>
+                         </div>
+                         <h4 class="date_text">29 Nov. 2024</h4>
+                    </section>
+                    <section class="weather_summary_sec">
+                         <img src="img/haze.png" class="weather_img_elm">
+                         <div class="weather_summary_info">
+                              <h1 class="temp_text">26 °C</h1>
+                              <h4 class="condition_text">Clouds</h4>
+                         </div>
+                    </section>
+                    <section class="weather_condition_sec">
+                         <div class="condition_item">
+                              <img src="img/humidity.png" class="humidity_img">
+                              <div class="condition_info">
+                                   <div class="regular_text">Humidity</div>
+                                   <div class="humidity_value">45%</div>
+                              </div>
+                         </div>
+                         <div class="condition_item">
+                              <img src="img/wind.png" alt="">
+                              <div class="condition_info">
+                                   <div class="regular_text">Wind</div>
+                                   <div class="wind_speed_value">4 km/h</div>
+                              </div>
+                         </div>
+                    </section>
+                    <!-- forecast weather elms  -->
+                    <section class="forecast_section">
+                         <div class="forecast_item">
+                              <h5 class="forcast_date">26 Nov.</h5>
+                              <img src="img/haze.png" alt="">
+                              <h5 class="forecast_temp">24 *C</h5>
+                         </div>
+                         <div class="forecast_item">
+                              <h5 class="forcast_date">26 Nov.</h5>
+                              <img src="img/haze.png" alt="">
+                              <h5 class="forecast_temp">24 *C</h5>
+                         </div>
+                    </section>
+               </main>
+          </div>
+     </body>
+</html>
