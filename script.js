@@ -87,7 +87,7 @@ async function displayWeather(city){
 function getWeatherIcon(weather){
      if(weather === "Clear") return "img/clear.png";
      if(weather === "Clouds") return "img/clouds.png";
-     if(weather === "Rain") return "img/rain.png";
+     if(weather === "Rain") return "img/rainy.png";
      if(weather === "Drizzle") return "img/drizzle.png";
      if(weather === "Mist") return "img/mist.png";
      return "img/light_clouds.png"
