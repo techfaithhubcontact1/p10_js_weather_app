@@ -6,7 +6,7 @@ const weatherElm = document.querySelector(".weather_box");
 const noCityElm = document.querySelector(".no_city");
 const localCity = noCityElm.querySelector(".no_city .local_city");
 const paraElm = noCityElm.querySelector(".no_city p");
-const cityTextElm = weatherElm.querySelector(".city_text");
+let cityTextElm = weatherElm.querySelector(".city_text");
 const dateTextElm = weatherElm.querySelector(".date_text");
 const weatherImgElm = weatherElm.querySelector(".weather_img_elm");
 const tempTextElm = weatherElm.querySelector(".temp_text");
@@ -63,6 +63,7 @@ async function displayWeather(city){
      if(currWeather.cod === 200){
           const {name, main:{temp, humidity}, wind:{speed}, weather:[{main}]} = currWeather;
           cityTextElm.innerText = name;
+          cityName = name;
           tempTextElm.innerText = `${Math.round(temp)} °C`;
           contdTextElm.innerText = main;
           humValElm.innerText = humidity + "%";
@@ -131,28 +132,22 @@ async function fetchCurrentLocation(latitude, longitude){
      let mainURL = `${baseURL}?q=${query}&key=${geoAPIKey}`;
      let response = await fetch(mainURL);
      return response.json();
-}
-
-// found location 
-let lCity = '';
-function getCurrLocation(){
-     navigator.geolocation.watchPosition( async (position)=>{
-          let {latitude, longitude} = position.coords;
-          let addr = await fetchCurrentLocation(latitude, longitude);
-          lCity = addr.results[0].components.city;
-          displayWeather(lCity);
-     }, (err)=>{
-          console.log("err..", err);
-     });
 };
 
-localCity.addEventListener("click", ()=>{
-     getCurrLocation();
+// found location 
+let lCity = "";
+navigator.geolocation.getCurrentPosition( async (position)=>{
+     let {latitude, longitude} = position.coords;
+     let addr = await fetchCurrentLocation(latitude, longitude);
+     lCity = addr.results[0].components.city;
      displayWeather(lCity);
+},  (err)=>{
+     console.log("err..", err);
+     displayWeather("Indore");
+});
+
+localCity.addEventListener("click", ()=>{
+     displayWeather(lCity?lCity:"Indore");
      noCityElm.classList.add("hide");
      weatherElm.classList.remove("hide");
 });
-
-if(cityInput.value === ""){
-     getCurrLocation();
-};
